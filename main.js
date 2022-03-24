@@ -20,6 +20,14 @@ const ui = ( () => {
             gameDiv.appendChild(cell)
         })
     }
+    const clear = () => {
+        const cell = document.querySelectorAll('.cell')
+        
+        cell.forEach( element => {
+            element.remove()
+        })
+        
+    }
     const input = () => {
         const monitor = document.querySelectorAll('.cell')
         monitor.forEach( (element, index) => {
@@ -29,7 +37,7 @@ const ui = ( () => {
         })
     }
 
-    return {display, input}
+    return {display, clear, input}
 })()
 
 

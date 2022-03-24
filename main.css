@@ -23,3 +23,7 @@
 .game-container span {
     padding: 2em;
 }
+
+.game-container span:hover {
+    background-color: lightblue;
+}
