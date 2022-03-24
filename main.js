@@ -20,10 +20,18 @@ const ui = ( () => {
             gameDiv.appendChild(cell)
         })
     }
+    const input = () => {
+        const monitor = document.querySelectorAll('.cell')
+        monitor.forEach( (element, index) => {
+            element.addEventListener('click', () => {
+                board[index] = 'X'
+            })
+        })
+    }
 
-    return {display}
+    return {display, input}
 })()
 
 
 ui.display()
-
+ui.input()
