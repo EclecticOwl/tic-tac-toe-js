@@ -12,20 +12,19 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 1em;
 
     height: 100vh;
 }
 .game-container {
-    margin-top: 8em;
+    margin-top: 6em;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     cursor: pointer;
 }
 
 .game-container span {
-    height: 200px;
-    width: 200px;
+    height: 150px;
+    width: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
