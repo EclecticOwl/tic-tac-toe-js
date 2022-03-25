@@ -70,7 +70,7 @@ const ui = ( () => {
             monitor.forEach( (element, index) => {
                 element.addEventListener('click', () => {
                     board[index] = player.marker
-                    msg.textContent = ''
+                    header.removeChild(msg)
                     count++
                     gameLogic()
                 })
