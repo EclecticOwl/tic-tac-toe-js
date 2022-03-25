@@ -68,11 +68,15 @@ const ui = ( () => {
 
         if (win == false) {
             monitor.forEach( (element, index) => {
-                element.addEventListener('click', () => {
-                    board[index] = player.marker
-                    header.removeChild(msg)
-                    count++
-                    gameLogic()
+                element.addEventListener('click', (e) => {
+                    if (e.target.textContent == 'X' || e.target.textContent == 'O') {
+                        msg.textContent = 'Invalid Selection! Please Try Again!'
+                    }else {
+                        board[index] = player.marker
+                        header.removeChild(msg)
+                        count++
+                        gameLogic()
+                    }
                 })
             })   
         }
