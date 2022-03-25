@@ -17,11 +17,10 @@
     margin-top: 8em;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 5em;
 }
 
 .game-container span {
-    padding: 2em;
+    padding: 5em;
 }
 
 .game-container span:hover {
