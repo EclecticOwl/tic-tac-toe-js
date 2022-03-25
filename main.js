@@ -1,12 +1,15 @@
+// Array for holding player markers
 let board = ['', '', '', 
             '', '', '', 
             '', '', '']
 
+// Player function Factory
 const player = (x) => {
     const marker = x
     return {marker}
 }
 
+//Flags for keeping track of win conditions
 let count = 0;
 let win = false
 
@@ -28,8 +31,7 @@ const winCheck = () => {
 
 const ui = ( () => {
     const gameDiv = document.getElementById('game-container')
-
-
+    //Displays array to UI
     const display = () => {
         board.forEach( element => {
             const cell = document.createElement('span')
@@ -38,6 +40,7 @@ const ui = ( () => {
             gameDiv.appendChild(cell)
         })
     }
+    // Clears node list from UI, to prevent duplication of node list
     const clear = () => {
         const cell = document.querySelectorAll('.cell')
         cell.forEach( element => {
@@ -45,6 +48,7 @@ const ui = ( () => {
         })
         
     }
+    //Allows interactivty between the array and the UI
     const input = (player) => {
         const monitor = document.querySelectorAll('.cell')
         const header = document.getElementById('header')
@@ -53,6 +57,12 @@ const ui = ( () => {
 
         player.marker == 'X' && win == false ? msg.textContent = 'Player 1 Turn' : msg.textContent = 'Player 2 Turn'
 
+        console.log(count)
+        if (count == 9) {
+            msg.textContent = 'Draw'
+            header.append(msg)
+            return
+        }
 
         header.appendChild(msg)
 
@@ -65,11 +75,15 @@ const ui = ( () => {
                     gameLogic()
                 })
             })   
+        }else if (win == true) {
+            msg.textContent = ''
+            return
         }
     }
     return {display, clear, input}
 })()
 
+// Controls the game flow
 const gameLogic = () => {
     const x = player('X')
     const o = player('O')
@@ -78,18 +92,15 @@ const gameLogic = () => {
         ui.clear()
         ui.display()
     }
-    
+
     winCheck()
 
-    if (win == true) {
-        const header = document.getElementById('header')
-        const span = document.createElement('span')
-        span.textContent = 'Winner!'
-        header.append(span)
-    }
+    const header = document.getElementById('header')
+    const message = document.createElement('span')
 
-    if (count > 9) {
-        console.log('End of game')
+    if (win == true) {
+        message.textContent = 'Winner!'
+        header.append(message)
     }else if (count == 0) {
         ui.display()
         ui.input(x)
@@ -101,5 +112,4 @@ const gameLogic = () => {
         ui.input(x)
     }
 }
-
 gameLogic()
