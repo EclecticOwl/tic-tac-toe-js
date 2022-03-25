@@ -57,7 +57,6 @@ const ui = ( () => {
 
         player.marker == 'X' && win == false ? msg.textContent = 'Player 1 Turn' : msg.textContent = 'Player 2 Turn'
 
-        console.log(count)
         if (count == 9) {
             msg.textContent = 'Draw'
             header.append(msg)
