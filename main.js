@@ -52,7 +52,7 @@ const ui = ( () => {
     const input = (player) => {
         const monitor = document.querySelectorAll('.cell')
         const header = document.getElementById('header')
-        const msg = document.createElement('span')
+        const msg = document.createElement('p')
         msg.classList.add('msg')
 
         player.marker == 'X' && win == false ? msg.textContent = 'Player 1 Turn' : msg.textContent = 'Player 2 Turn'
@@ -75,9 +75,6 @@ const ui = ( () => {
                     gameLogic()
                 })
             })   
-        }else if (win == true) {
-            msg.textContent = ''
-            return
         }
     }
     return {display, clear, input}
@@ -96,9 +93,10 @@ const gameLogic = () => {
     winCheck()
 
     const header = document.getElementById('header')
-    const message = document.createElement('span')
+    const message = document.createElement('p')
 
     if (win == true) {
+        refresh()
         message.textContent = 'Winner!'
         header.append(message)
     }else if (count == 0) {
